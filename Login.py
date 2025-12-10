@@ -57,20 +57,20 @@ def login():
             return
         print(f'Welcome back, {correct_user}! Access Accepted.')
 
-def create_accounct():
-    UserID = input('Enter your User ID: ').strip()
-    Password = input('Enter your Password: ').strip()
+def create_account():
+    user_id = input('Enter your User ID: ').strip()
+    password = input('Enter your Password: ').strip()
 
     while True:
-        Pin = input('Enter your Pin: ').strip()
-        if len(Pin) == 4:
+        pin = input('Enter your Pin: ').strip()
+        if len(pin) == 4:
             break
         else:
             print('Pin must be 4 digits.')
 
     try:
         with open('user.txt', 'a') as file1:
-             file1.write(f"{UserID}, {Pin}, {Password}\n")
+             file1.write(f"{user_id }, {pin}, {password}\n")
         print("Account created successfully!")
 
     except FileNotFoundError:
@@ -86,13 +86,15 @@ def main():
         if choice == '1':
             login()
         elif choice == "2":
-            create_accounct()
+            create_account()
         elif choice == '3':
             break
         else:
             print("Invalid choice.")
 
 
-main()
+if __name__ == "__main__":
+    main()
+
 
 
